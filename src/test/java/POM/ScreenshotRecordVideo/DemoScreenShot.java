@@ -16,7 +16,6 @@ public class DemoScreenShot extends BaseSetup {
         loginPage.loginCRM(DataConfig.EMAIL, DataConfig.PASSWORD);
 //        Assert.assertEquals(DriverManager.getDriver().getTitle(), "Dashboard");
        Capturehelper.screenshot("Screenshot Dashboard");
-
     }
 
 }
