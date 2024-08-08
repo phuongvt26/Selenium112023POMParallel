@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Page Object test example" parallel="classes">
+<test name="sample test" parallel="methods">
+    <classes>
+        <class name="POM.TestCases.DashboardTest">
+            <methods>
+                <include name="testClickClosePopupAddNewToDo">
+                </include>
+                <include name="testClickItemClosePopupAddNewToDo">
+                </include>
+            </methods>
+        </class>
+<!--        <class name="POM.TestCases.ProjectTest">-->
+<!--        </class>-->
+    </classes>
+</test>
+</suite>

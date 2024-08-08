@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Page Object test example">
+    <parameter name="browserType" value="chrome" />
+    <parameter name="appURL"
+               value="test" />
+
+    <test name="sample test">
+
+        <classes>
+            <class name="POM.TestCases.LoginTest">
+                <parameter name="Email" value="admin@example.com"></parameter>
+                <parameter name="Password" value="123456"></parameter>
+                <methods>
+                    <include name="testLoginSuccessNocheckRememberMe" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

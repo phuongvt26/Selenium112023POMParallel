@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Page Object test example">
+    <test name="sample test" parallel="classes">
+        <classes>
+            <class name="POM.TestCases.LoginTest">
+            </class>
+        </classes>
+    </test>
+</suite>
