@@ -1,6 +1,6 @@
 package POM.TestCases;
 
-import CONFIG.Helper.ExcelHelpers;
+import CONFIG.Helpers.ExcelHelpers;
 import org.testng.annotations.Test;
 
 public class DemoExcel {

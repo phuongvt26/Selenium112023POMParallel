@@ -1,8 +1,7 @@
 package POM.Page;
 
-import POM.Contains.WebUI;
+import CONFIG.Keywords.WebUI;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 

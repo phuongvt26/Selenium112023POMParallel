@@ -1,10 +1,10 @@
 package POM.TestCases;
 
-import CONFIG.Helper.ExcelHelpers;
+import CONFIG.Helpers.ExcelHelpers;
 import POM.Base.BaseSetup;
-import POM.Contains.DataConfig;
+import CONFIG.Contains.DataConfig;
 import POM.DataProvider.DataProviderFactory;
-import POM.Drivers.DriverManager;
+import CONFIG.Drivers.DriverManager;
 import POM.Page.DashboardPage;
 import POM.Page.LoginPage;
 import org.testng.annotations.Test;

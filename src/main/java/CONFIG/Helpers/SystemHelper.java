@@ -1,4 +1,4 @@
-package CONFIG.Helper;
+package CONFIG.Helpers;
 
 import java.io.File;
 

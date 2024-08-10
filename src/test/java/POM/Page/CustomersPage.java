@@ -1,14 +1,14 @@
 package POM.Page;
 
-import CONFIG.Helper.ExcelHelpers;
-import POM.Contains.WebUI;
-import POM.Drivers.DriverManager;
+import CONFIG.Helpers.ExcelHelpers;
+import CONFIG.Keywords.WebUI;
+import CONFIG.Drivers.DriverManager;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 
 import java.util.List;
 
-import static POM.Contains.WebUI.*;
+import static CONFIG.Keywords.WebUI.*;
 
 public class CustomersPage extends CommonPage {
     private By buttonNewCustomer = By.xpath("//a[normalize-space()='New Customer']");

@@ -1,7 +1,7 @@
 package POM.TestCases;
 
 import POM.Base.BaseSetup;
-import POM.Contains.WebUI;
+import CONFIG.Keywords.WebUI;
 import POM.Page.CustomersPage;
 import POM.Page.DashboardPage;
 import POM.Page.LoginPage;

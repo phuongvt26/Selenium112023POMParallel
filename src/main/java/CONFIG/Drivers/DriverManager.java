@@ -1,11 +1,11 @@
-package POM.Drivers;
+package CONFIG.Drivers;
 import org.openqa.selenium.WebDriver;
 public class DriverManager {
 
 
         private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-        private DriverManager() {
+        public static void DriverManager() {
         }
 
         public static WebDriver getDriver() {

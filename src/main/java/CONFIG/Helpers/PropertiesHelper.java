@@ -1,4 +1,4 @@
-package CONFIG.Helper;
+package CONFIG.Helpers;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;

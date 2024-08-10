@@ -1,6 +1,6 @@
 package POM.DataProvider;
 
-import CONFIG.Helper.ExcelHelpers;
+import CONFIG.Helpers.ExcelHelpers;
 import org.testng.annotations.DataProvider;
 
 public class DataProviderFactory {

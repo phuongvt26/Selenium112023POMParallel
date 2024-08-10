@@ -1,11 +1,9 @@
 package POM.Page;
-import POM.Contains.DataConfig;
-import POM.Contains.WebUI;
-import POM.Drivers.DriverManager;
+import CONFIG.Contains.DataConfig;
+import CONFIG.Keywords.WebUI;
+import CONFIG.Drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 public class LoginPage {
     //Khai báo driver cục bộ

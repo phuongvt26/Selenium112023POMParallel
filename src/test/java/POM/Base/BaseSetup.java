@@ -1,11 +1,13 @@
 package POM.Base;
 
-import CONFIG.Helper.PropertiesHelper;
-import POM.Drivers.DriverManager;
+import CONFIG.Helpers.CaptureHelper;
+import CONFIG.Helpers.PropertiesHelper;
+import CONFIG.Drivers.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 
@@ -69,7 +71,9 @@ public class BaseSetup {
     }
 
     @AfterMethod
-    public void closeDriver() {
+    public void closeDriver(ITestResult iTestResult) {
+        if(iTestResult.getStatus() == ITestResult.FAILURE)
+            CaptureHelper.screenshot(iTestResult.getName());
         DriverManager.quit();
     }
 

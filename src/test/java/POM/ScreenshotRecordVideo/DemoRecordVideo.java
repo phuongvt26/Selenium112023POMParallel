@@ -9,20 +9,14 @@ import POM.Page.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class DemoScreenShot extends BaseSetup {
-
-   @Test
+public class DemoRecordVideo extends BaseSetup {
+    @Test
     public void testHomePage1() {
-//       SoftAssert softAssert = new SoftAssert();
+        CaptureHelper.startRecord("Record testHomePage1");
         WebUI.openURL(DataConfig.URL);
         LoginPage loginPage = new LoginPage();
         loginPage.loginCRM(DataConfig.EMAIL, DataConfig.PASSWORD);
-//       softAssert.assertEquals(DriverManager.getDriver().getTitle(), "Dashboard");
-       Assert.assertEquals(DriverManager.getDriver().getTitle(), "Dashboard");
-       CaptureHelper.screenshot("Screenshot login");
-//       softAssert.assertAll();
-
-
-   }
-
+        Assert.assertEquals(DriverManager.getDriver().getTitle(), "Dashboard");
+        CaptureHelper.stopRecord();
+    }
 }

@@ -1,6 +1,6 @@
-package POM.Contains;
-import CONFIG.Helper.PropertiesHelper;
-import POM.Drivers.DriverManager;
+package CONFIG.Keywords;
+import CONFIG.Helpers.PropertiesHelper;
+import CONFIG.Drivers.DriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;

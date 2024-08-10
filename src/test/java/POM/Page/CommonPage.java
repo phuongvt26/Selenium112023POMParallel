@@ -1,5 +1,5 @@
 package POM.Page;
-import POM.Contains.WebUI;
+import CONFIG.Keywords.WebUI;
 import org.openqa.selenium.By;
 public class CommonPage {
     private CommonPage commonPage;
