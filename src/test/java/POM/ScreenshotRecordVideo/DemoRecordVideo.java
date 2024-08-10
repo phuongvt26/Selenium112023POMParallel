@@ -19,5 +19,6 @@ public class DemoRecordVideo extends BaseSetup {
         loginPage.loginCRM(DataConfig.EMAIL, DataConfig.PASSWORD);
         Assert.assertEquals(DriverManager.getDriver().getTitle(), "Dashboard");
         CaptureHelper.stopRecord();
+
     }
 }
