@@ -106,6 +106,7 @@ public class LoginPage {
         enterPassword(password);
         clickCheckboxRememberMe();
         clickButtonLogin();
+        WebUI.getCurrentUrl();
         return new DashboardPage();
     }
 

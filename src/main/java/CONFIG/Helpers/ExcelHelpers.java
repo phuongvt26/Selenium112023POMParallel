@@ -1,5 +1,6 @@
 package CONFIG.Helpers;
 
+import CONFIG.Utils.LogUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -50,7 +51,7 @@ public class ExcelHelpers {
             });
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            LogUtils.error(e.getMessage());
         }
     }
 
@@ -78,6 +79,7 @@ public class ExcelHelpers {
             }
             return CellData;
         } catch (Exception e) {
+            LogUtils.error(e.getMessage());
             return "";
         }
     }
@@ -114,7 +116,7 @@ public class ExcelHelpers {
                 fileOut.flush();
                 fileOut.close();
             } catch (Exception e) {
-                e.getMessage();
+                LogUtils.error(e.getMessage());
             }
         }
 
@@ -169,7 +171,7 @@ public class ExcelHelpers {
             int noOfRows = sh.getPhysicalNumberOfRows();
             int noOfCols = row.getLastCellNum();
 
-            System.out.println(noOfRows + " - " + noOfCols);
+            LogUtils.info(noOfRows + " - " + noOfCols);
 
             Cell cell;
             data = new Object[noOfRows - 1][noOfCols];
@@ -185,7 +187,11 @@ public class ExcelHelpers {
                             data[i - 1][j] = cell.getStringCellValue();
                             break;
                         case NUMERIC:
-                            data[i - 1][j] = String.valueOf(cell.getNumericCellValue());
+                            if (cell.getNumericCellValue() % 1 == 0) {
+                                data[i - 1][j] = String.valueOf((int) cell.getNumericCellValue());
+                            } else {
+                                data[i - 1][j] = String.valueOf(cell.getNumericCellValue());
+                            }
                             break;
                         case BLANK:
                             data[i - 1][j] = cell.getStringCellValue();
@@ -197,7 +203,7 @@ public class ExcelHelpers {
                 }
             }
         } catch (Exception e) {
-            System.out.println("The exception is:" + e.getMessage());
+            LogUtils.error("The exception is:" + e.getMessage());
             throw new RuntimeException(e);
         }
         return data;
@@ -209,7 +215,7 @@ public class ExcelHelpers {
             row = sh.getRow(0);
             return row.getLastCellNum();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            LogUtils.error(e.getMessage());
             throw (e);
         }
     }
@@ -227,17 +233,17 @@ public class ExcelHelpers {
     // Hàm này dùng để đọc data từ Excel theo vị trí dòng bắt đầu và kết thúc
 
     public Object[][] getDataHashTable(String excelPath, String sheetName, int startRow, int endRow) {
-        System.out.println("Excel Path: " + excelPath);
+        LogUtils.info("Excel Path: " + excelPath);
         Object[][] data = null;
 
         try {
             File f = new File(excelPath);
             if (!f.exists()) {
                 try {
-                    System.out.println("File Excel path not found.");
+                    LogUtils.info("File Excel path not found.");
                     throw new IOException("File Excel path not found.");
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    LogUtils.error(e.getMessage());
                 }
             }
 
@@ -250,8 +256,8 @@ public class ExcelHelpers {
             int rows = getLastRowNum();
             int columns = getColumns();
 
-            System.out.println("Row: " + rows + " - Column: " + columns);
-            System.out.println("StartRow: " + startRow + " - EndRow: " + endRow);
+            LogUtils.info("Row: " + rows + " - Column: " + columns);
+            LogUtils.info("StartRow: " + startRow + " - EndRow: " + endRow);
 
             data = new Object[(endRow - startRow) + 1][1];
             Hashtable<String, String> table = null;
@@ -265,6 +271,7 @@ public class ExcelHelpers {
 
         } catch (IOException e) {
             e.printStackTrace();
+            LogUtils.error(e.getMessage());
         }
 
         return data;

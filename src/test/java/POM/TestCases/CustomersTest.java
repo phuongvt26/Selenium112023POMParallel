@@ -1,5 +1,6 @@
 package POM.TestCases;
 
+import CONFIG.Utils.LogUtils;
 import POM.Base.BaseSetup;
 import CONFIG.Keywords.WebUI;
 import POM.Page.CustomersPage;
@@ -35,8 +36,6 @@ public class CustomersTest extends BaseSetup {
         customersPage.checkAddNewCustomerWithDataExcel("Khách hàng 2");
         customersPage.checkDetailCustomer("Khách hàng 2");
     }
-
-
     @Test
     public void testAddNewCustomerValidFullFiled() {
         String nameCustomer = "Selenium112023_Test18";
@@ -45,12 +44,12 @@ public class CustomersTest extends BaseSetup {
         customersPage = dashboardPage.clickMenuCustomers();
         int totalCustomerBefore = Integer.parseInt(customersPage.getTotalCustomers());
         customersPage.getTotalCustomers();
-        System.out.println("Total customer after: " + customersPage.getTotalCustomers());
+        LogUtils.info("Total customer after: " + customersPage.getTotalCustomers());
         customersPage.clickNewCustomer();
         customersPage.checkAddNewCustomer(nameCustomer);
         customersPage.checkCustomerInTableList(nameCustomer);
         Assert.assertEquals(customersPage.getTotalCustomers(), String.valueOf(totalCustomerBefore + 1), "\uD83D\uDC1E FAIL!! Count not equal");
-        System.out.println("Total customer now: " + customersPage.getTotalCustomers()); // in tổng số customer hiện có
+        LogUtils.info("Total customer now: " + customersPage.getTotalCustomers()); // in tổng số customer hiện có
         customersPage.checkDetailCustomer(nameCustomer);
         projectPage = customersPage.clickMenuProject();
         projectPage.clickAddNewProject();
@@ -97,6 +96,6 @@ public class CustomersTest extends BaseSetup {
 //        System.out.println("Total customer after: "+customersPage.getTotalCustomers());
         customersPage.checkDeleteAllCustomer("Total customers deleted: 25");
         Assert.assertEquals(customersPage.getTotalCustomers(), String.valueOf(totalCustomerBefore - 25), "\uD83D\uDC1E FAIL!! Count not equal");
-        System.out.println("Total customer now: " + customersPage.getTotalCustomers()); // in tổng số customer hiện có
+        LogUtils.info("Total customer now: " + customersPage.getTotalCustomers()); // in tổng số customer hiện có
     }
 }

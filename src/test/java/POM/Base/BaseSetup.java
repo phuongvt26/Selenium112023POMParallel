@@ -1,21 +1,19 @@
 package POM.Base;
 
-import CONFIG.Helpers.CaptureHelper;
-import CONFIG.Helpers.PropertiesHelper;
 import CONFIG.Drivers.DriverManager;
+import POM.Listeners.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
 
-
+@Listeners(TestListener.class)
 public class BaseSetup {
-    @BeforeSuite
-    public void setupEnvironment(){
-        PropertiesHelper.loadAllFiles();
-    }
+//    @BeforeSuite
+//    public void setupEnvironment(){
+//        PropertiesHelper.loadAllFiles();
+//    }
 
     @BeforeMethod
     @Parameters({"browser"})
@@ -71,9 +69,7 @@ public class BaseSetup {
     }
 
     @AfterMethod
-    public void closeDriver(ITestResult iTestResult) {
-        if(iTestResult.getStatus() == ITestResult.FAILURE)
-            CaptureHelper.screenshot(iTestResult.getName());
+    public void closeDriver() {
         DriverManager.quit();
     }
 

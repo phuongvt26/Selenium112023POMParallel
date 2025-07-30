@@ -1,6 +1,7 @@
 package POM.TestCases;
 
 import CONFIG.Helpers.ExcelHelpers;
+import CONFIG.Utils.LogUtils;
 import org.testng.annotations.Test;
 
 public class DemoExcel {
@@ -13,13 +14,13 @@ public class DemoExcel {
 //        System.out.println(excelHelpers.getCellData("PASSWORD", 1));
 //        System.out.println(excelHelpers.getCellData("PASSWORD", 2));
         for(int i=0;i<=3;i++){
-            System.out.println(excelHelpers.getCellData("EMAIL", i));
-            System.out.println(excelHelpers.getCellData("PASSWORD", i));
+            LogUtils.info(excelHelpers.getCellData("EMAIL", i));
+            LogUtils.info(excelHelpers.getCellData("PASSWORD", i));
         }
 // set data to excel
         excelHelpers.setCellData("Phuong1","EMAIL", 4);
         excelHelpers.setCellData("TEST", 1,1);
-        System.out.println("Set cell thành công");
+        LogUtils.info("Set cell thành công");
 
     }
 }

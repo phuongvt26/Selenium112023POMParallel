@@ -2,6 +2,7 @@ package CONFIG.Helpers;
 
 import CONFIG.Contains.DataConfig;
 import CONFIG.Drivers.DriverManager;
+import CONFIG.Utils.LogUtils;
 import org.monte.media.Format;
 import org.monte.media.FormatKeys;
 import org.monte.media.Registry;
@@ -38,7 +39,7 @@ public class CaptureHelper extends ScreenRecorder {
         if (!movieFolder.exists()) {
             movieFolder.mkdirs();
         } else if (!movieFolder.isDirectory()) {
-            throw new IOException("\"" + movieFolder + "\" is not a directory.");
+            LogUtils.error("\"" + movieFolder + "\" is not a directory.");
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
         return new File(movieFolder, name + "-" + dateFormat.format(new Date()) + "." + Registry.getInstance().getExtension(fileFormat));
@@ -47,7 +48,7 @@ public class CaptureHelper extends ScreenRecorder {
     // Start record video
     public static void startRecord(String methodName) {
         //Tạo thư mục để lưu file video vào
-        File file = new File(SystemHelper.getCurrentDir() + DataConfig.RECORD_VIDEO_PATH);
+        File file = new File(SystemHelper.getCurrentDir() + PropertiesHelper.getValue("RECORD_VIDEO_PATH"));
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = screenSize.width;
@@ -60,9 +61,9 @@ public class CaptureHelper extends ScreenRecorder {
             screenRecorder = new CaptureHelper(gc, captureSize, new Format(MediaTypeKey, FormatKeys.MediaType.FILE, MimeTypeKey, MIME_AVI), new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, DepthKey, 24, FrameRateKey, Rational.valueOf(15), QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60), new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black", FrameRateKey, Rational.valueOf(30)), null, file, methodName);
             screenRecorder.start();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            LogUtils.error(e.getMessage());
         } catch (AWTException e) {
-            throw new RuntimeException(e);
+            LogUtils.error(e.getMessage());
         }
     }
 
@@ -71,8 +72,9 @@ public class CaptureHelper extends ScreenRecorder {
         try {
             screenRecorder.stop();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            LogUtils.error(e.getMessage());
         }
+        LogUtils.info("Record success !!");
     }
 
 
@@ -91,9 +93,9 @@ public class CaptureHelper extends ScreenRecorder {
             FileHandler.copy(source, new File(DataConfig.SCREENSHOT_PATH + imageName + "-" + dateFormat.format(new Date()) + ".png"));
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+           LogUtils.error(e.getMessage());
         }
-        System.out.println("Screenshot success !!");
+        LogUtils.info("Screenshot success !!");
     }
 }
 

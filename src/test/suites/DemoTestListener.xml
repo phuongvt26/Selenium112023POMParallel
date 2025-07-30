@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Page Object test example">
+    <listeners>
+        <listener class-name="POM.Listeners.TestListener"></listener>
+    </listeners>
+    <test name="sample test1">
+        <classes>
+            <class name="POM.TestCases.LoginTest">
+                <methods>
+                    <include name="testLoginSuccessNocheckRememberMe"/>
+<!--                    <include name="testLoginFailWithPasswordNull"/>-->
+                </methods>
+            </class>
+            <class name="POM.TestCases.DashboardTest">
+                <methods>
+                    <include name="testClickDashboard"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

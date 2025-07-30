@@ -1,17 +1,18 @@
 package POM.TestCases;
 
-import CONFIG.Helpers.ExcelHelpers;
-import POM.Base.BaseSetup;
 import CONFIG.Contains.DataConfig;
-import POM.DataProvider.DataProviderFactory;
 import CONFIG.Drivers.DriverManager;
+import CONFIG.Helpers.ExcelHelpers;
+import CONFIG.Utils.LogUtils;
+import POM.Base.BaseSetup;
+import POM.DataProvider.DataProviderFactory;
 import POM.Page.DashboardPage;
 import POM.Page.LoginPage;
 import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-
+//@Listeners({TestListener.class})
 public class LoginTest extends BaseSetup {
     LoginPage loginPage;
     DashboardPage dashboardPage;
@@ -30,7 +31,6 @@ public class LoginTest extends BaseSetup {
         loginPage = new LoginPage();
         dashboardPage = loginPage.loginCRM(DataConfig.EMAIL, DataConfig.PASSWORD);
         loginPage.verifyLoginScucess();
-        System.out.println(DriverManager.getDriver().getCurrentUrl());
 //        dashboardPage.logOutCRM();
     }
 
@@ -132,7 +132,7 @@ public class LoginTest extends BaseSetup {
         dashboardPage = loginPage.loginCRM("admin123@example.cosssdam", "123456");
         loginPage.clickForgotPassword();
         loginPage.verifyClickForgotPasswordSuccess();
-        System.out.println(DriverManager.getDriver().getCurrentUrl());
+        LogUtils.info(DriverManager.getDriver().getCurrentUrl());
     }
 
     @Test

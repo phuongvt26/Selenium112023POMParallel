@@ -1,5 +1,6 @@
 package POM.TestCases;
 
+import CONFIG.Utils.LogUtils;
 import POM.DataProvider.DataProviderFactory;
 import org.testng.annotations.Test;
 
@@ -26,25 +27,25 @@ public class DemoDataProvider {
     // Truyền nơi cung cấp dữ liệu vào trong testcase
     @Test(dataProvider = "datalogin", dataProviderClass = DataProviderFactory.class)
     public void testloginsucesses(String Email, String Password){
-        System.out.println("Email "+ Email);
-        System.out.println("Password " + Password);
+        LogUtils.info("Email "+ Email);
+        LogUtils.info("Password " + Password);
     }
     @Test(dataProvider = "addnewcustomer", dataProviderClass = DataProviderFactory.class)
     public void testaddnewcustomer(String Name, int age, String city){
-        System.out.println("Name "+ Name);
-        System.out.println("Tuổi " + age);
-        System.out.println("City " + city);
+        LogUtils.info("Name "+ Name);
+        LogUtils.info("Tuổi " + age);
+        LogUtils.info("City " + city);
     }
     // Excel
     @Test(dataProvider = "dataLoginFromExcel", dataProviderClass = DataProviderFactory.class)
     public void testLoginFromExelFile(String Email, String Password){
-        System.out.println("Email "+ Email);
-        System.out.println("Password " + Password);
+        LogUtils.info("Email "+ Email);
+        LogUtils.info("Password " + Password);
     }
     @Test(dataProvider = "dataLoginFromExcelMutilbleRow", dataProviderClass = DataProviderFactory.class)
     public void testLoginFromExelFileMutibleRow(Hashtable< String, String > data){
-        System.out.println("Email "+ data.get("EMAIL")); //EMAIL: tên cột trong file Excel
-        System.out.println("Password " + data.get("PASSWORD")); //PASSWORD: tên cột trong file Excel
+        LogUtils.info("Email "+ data.get("EMAIL")); //EMAIL: tên cột trong file Excel
+        LogUtils.info("Password " + data.get("PASSWORD")); //PASSWORD: tên cột trong file Excel
     }
 
 }
